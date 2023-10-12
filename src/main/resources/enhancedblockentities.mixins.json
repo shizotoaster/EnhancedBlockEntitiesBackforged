@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "foundationgames.enhancedblockentities.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "plugin": "foundationgames.enhancedblockentities.mixin.EBEMixinPlugin",
+  "client": [
+    "AbstractBlockStateMixin",
+    "BakedModelManagerMixin",
+    "BellBlockEntityMixin",
+    "BlockEntityRenderDispatcherMixin",
+    "ChestBlockEntityMixin",
+    "EnderChestBlockEntityMixin",
+    "MinecraftClientMixin",
+    "ReloadableResourceManagerImplMixin",
+    "VideoOptionsScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

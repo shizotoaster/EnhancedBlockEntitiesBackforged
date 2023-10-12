@@ -1,0 +1,51 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "GPLv3"
+
+[[mods]]
+    modId = "enhancedblockentities"
+    version = "${version}"
+    displayName = "Enhanced Block Entities"
+    displayURL=""
+    logoFile="ebe_icon.png"
+    authors='''
+
+    * FoundationGames - created this awesome mod
+    * shizotoaster - ported the mod to Forge 1.16.5
+    '''
+    credits = '''
+
+    * PortingLab - ForgedAPI
+    * CCr4ft3r - EBE modern Forge port
+    '''
+    description = '''
+Optimize and customize customize block entity rendering with a more modern approach.
+    '''
+
+    [[dependencies.enhancedblockentities]]
+        modId = "forge"
+        mandatory = true
+        versionRange = "[36,)"
+        ordering = "NONE"
+        side = "BOTH"
+
+    [[dependencies.enhancedblockentities]]
+        modId = "minecraft"
+        mandatory = true
+        versionRange = "[1.16.5,)"
+        ordering = "NONE"
+        side = "BOTH"
+
+    [[dependencies.enhancedblockentities]]
+        modId = "better_runtime_resource_pack"
+        mandatory = true
+        versionRange = "[0.8,)"
+        ordering = "NONE"
+        side = "BOTH"
+
+    [[dependencies.enhancedblockentities]]
+        modId = "forgedapi"
+        mandatory = true
+        versionRange = "[0.1.2,)"
+        ordering = "NONE"
+        side = "BOTH"
