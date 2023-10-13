@@ -6,7 +6,7 @@ license = "GPLv3"
     modId = "enhancedblockentities"
     version = "${version}"
     displayName = "Enhanced Block Entities"
-    displayURL=""
+    displayURL="https://github.com/shizotoaster/EnhancedBlockEntitiesBackforged"
     logoFile="ebe_icon.png"
     authors='''
 
@@ -46,6 +46,6 @@ Optimize and customize customize block entity rendering with a more modern appro
     [[dependencies.enhancedblockentities]]
         modId = "forgedapi"
         mandatory = true
-        versionRange = "[0.1.2,)"
+        versionRange = "[0.1.3,)"
         ordering = "NONE"
         side = "BOTH"

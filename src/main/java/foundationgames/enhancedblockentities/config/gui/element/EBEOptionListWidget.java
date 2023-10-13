@@ -176,7 +176,7 @@ public class EBEOptionListWidget extends ElementListWidget<EBEOptionListWidget.B
             };
             draw.drawTexture(matrices, x, y, 0, 46 + vo, entryWidth / 2, 20);
             draw.drawTexture(matrices, x + entryWidth / 2, y, 200 - entryWidth / 2, 46 + vo, entryWidth / 2, 20);
-            drawCenteredText(matrices, textRenderer, Text.of(I18n.translate(option.getValueKey())), x + entryWidth / 2, y + 12 / 2, option.isDefault() ? 0xFFFFFF : 0xffda5e);
+            drawCenteredText(matrices, textRenderer, Text.of(I18n.translate(option.getOptionKey()).concat(": ").concat(I18n.translate(option.getValueKey()))), x + entryWidth / 2, y + 12 / 2, option.isDefault() ? 0xFFFFFF : 0xffda5e);
         }
 
         @Override

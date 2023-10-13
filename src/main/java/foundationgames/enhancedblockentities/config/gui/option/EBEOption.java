@@ -35,9 +35,11 @@ public final class EBEOption {
         return values.get(selected);
     }
 
-    public String getValueKey() {
-        return String.format("option.ebe.%s.value.%s", key, getValue());
+    public String getOptionKey() {
+        return String.format("option.ebe.%s", key);
     }
+
+    public String getValueKey() { return String.format("value.ebe.%s", getValue()); }
 
     public List<Text> getValueCommentLines() {
         if (valueCommentLines == null) {

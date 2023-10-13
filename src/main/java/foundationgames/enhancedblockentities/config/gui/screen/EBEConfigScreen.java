@@ -27,11 +27,12 @@ public class EBEConfigScreen extends Screen {
     private static final ImmutableList<String> ALLOWED_FORCED_DISABLED = ImmutableList.of("allowed", "forced", "disabled");
     private static final ImmutableList<String> SIGN_TEXT_OPTIONS = ImmutableList.of("smart", "all", "most", "some", "few");
 
-    private static final Text HOLD_SHIFT = new TranslatableText("text.ebe.shiftForDesc").formatted(Formatting.DARK_GRAY, Formatting.ITALIC);
+    private static final Text HOLD_SHIFT = new TranslatableText("text.ebe.descriptions").formatted(Formatting.DARK_GRAY, Formatting.ITALIC);
     private static final Text CHEST_OPTIONS_TITLE = new TranslatableText("text.ebe.chest_options");
     private static final Text SIGN_OPTIONS_TITLE = new TranslatableText("text.ebe.sign_options");
     private static final Text BELL_OPTIONS_TITLE = new TranslatableText("text.ebe.bell_options");
     private static final Text BED_OPTIONS_TITLE = new TranslatableText("text.ebe.bed_options");
+    private static final Text SHULKER_BOX_OPTIONS_TITLE = new TranslatableText("text.ebe.shulker_box_options");
 
     public EBEConfigScreen(Screen screen) {
         super(new TranslatableText("screen.ebe.config"));
@@ -66,6 +67,7 @@ public class EBEConfigScreen extends Screen {
         } else {
             this.fillGradient(matrices, 0, 0, width, height, 0x4F232323, 0x4F232323);
         }
+
 
         this.options.render(matrices, mouseX, mouseY, delta);
 
@@ -125,9 +127,12 @@ public class EBEConfigScreen extends Screen {
         options.add(
                 new EBEOption(EBEConfig.RENDER_ENHANCED_SIGNS_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.RENDER_ENHANCED_SIGNS_KEY)), false, ReloadType.RESOURCES)
         );
-        options.addPair(
-                new EBEOption(EBEConfig.SIGN_AO_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.SIGN_AO_KEY)), false, ReloadType.RESOURCES),
+        options.add(
                 new EBEOption(EBEConfig.SIGN_TEXT_RENDERING_KEY, SIGN_TEXT_OPTIONS, SIGN_TEXT_OPTIONS.indexOf(config.getProperty(EBEConfig.SIGN_TEXT_RENDERING_KEY)), true, ReloadType.NONE)
+        );
+        options.addPair(
+                new EBEOption(EBEConfig.EXPERIMENTAL_SIGNS_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.EXPERIMENTAL_SIGNS_KEY)), false, ReloadType.RESOURCES),
+                new EBEOption(EBEConfig.SIGN_AO_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.SIGN_AO_KEY)), false, ReloadType.RESOURCES)
         );
         options.addTitle(BELL_OPTIONS_TITLE);
         options.add(
@@ -136,8 +141,16 @@ public class EBEConfigScreen extends Screen {
         );
         options.addTitle(BED_OPTIONS_TITLE);
         options.add(
-                new EBEOption(EBEConfig.RENDER_ENHANCED_BEDS_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.RENDER_ENHANCED_BEDS_KEY)), false, ReloadType.RESOURCES),
+                new EBEOption(EBEConfig.RENDER_ENHANCED_BEDS_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.RENDER_ENHANCED_BEDS_KEY)), false, ReloadType.RESOURCES)
+        );
+        options.addPair(
+                new EBEOption(EBEConfig.EXPERIMENTAL_BEDS_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.EXPERIMENTAL_BEDS_KEY)), false, ReloadType.RESOURCES),
                 new EBEOption(EBEConfig.BED_AO_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.BED_AO_KEY)), false, ReloadType.RESOURCES)
+        );
+        options.addTitle(SHULKER_BOX_OPTIONS_TITLE);
+        options.add(
+                new EBEOption(EBEConfig.RENDER_ENHANCED_SHULKER_BOXES_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.RENDER_ENHANCED_SHULKER_BOXES_KEY)), false, ReloadType.RESOURCES),
+                new EBEOption(EBEConfig.SHULKER_BOX_AO_KEY, BOOLEAN_OPTIONS, BOOLEAN_OPTIONS.indexOf(config.getProperty(EBEConfig.SHULKER_BOX_AO_KEY)), false, ReloadType.RESOURCES)
         );
     }
 }

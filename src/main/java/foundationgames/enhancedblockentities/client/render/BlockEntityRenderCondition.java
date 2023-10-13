@@ -5,6 +5,7 @@ import foundationgames.enhancedblockentities.client.render.entity.ChestBlockEnti
 import foundationgames.enhancedblockentities.config.EBEConfig;
 import net.minecraft.block.entity.BellBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.block.ChestAnimationProgress;
 import net.minecraft.util.math.Vec3d;
@@ -14,6 +15,13 @@ public interface BlockEntityRenderCondition {
     BlockEntityRenderCondition CHEST = entity -> {
         if(entity instanceof ChestAnimationProgress) {
             return ChestBlockEntityRendererOverride.getAnimationProgress(entity, 0).getAnimationProgress(0) > 0;
+        }
+        return false;
+    };
+
+    BlockEntityRenderCondition SHULKER_BOX = entity -> {
+        if(entity instanceof ShulkerBoxBlockEntity) {
+            return ((ShulkerBoxBlockEntity) entity).getAnimationProgress(0) > 0;
         }
         return false;
     };

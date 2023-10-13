@@ -41,10 +41,11 @@ dependencies {
     forge "net.minecraftforge:forge:${project.forge_version}"
 
     // ForgedAPI Fork
-    //modImplementation "maven.modrinth:forgedapi-fork:22uuQVBV"
-    modImplementation "org.portinglab.fabricapi:forgedapifork:0.1.2+1.16.5"// ForgedAPI Fork isn't on Modrinth yet
+    modImplementation "maven.modrinth:forgedapi-fork:TJlgW3Bu"
     // BRRP
     modImplementation "maven.modrinth:brrp:0.8.2-mc1.16.5-forge"
+    // Game Menu Mod Option
+    modImplementation "maven.modrinth:gamemenumodoption:IajuUlnl"
 }
 
 processResources {

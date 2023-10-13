@@ -1,7 +1,11 @@
 package foundationgames.enhancedblockentities;
 
+import foundationgames.enhancedblockentities.config.gui.screen.EBEConfigScreen;
+import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import foundationgames.enhancedblockentities.client.model.ModelIdentifiers;
 import foundationgames.enhancedblockentities.config.EBEConfig;
@@ -21,6 +25,8 @@ public class EnhancedBlockEntities {
 
     public static final EBEConfig CONFIG = new EBEConfig();
     public EnhancedBlockEntities() {
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (mc, screen) -> new EBEConfigScreen(screen));
+
         ModelIdentifiers.init();
         EBESetup.setupResourceProviders();
         ModelPredicateProviderRegistry.register(Items.CHEST, new Identifier("is_christmas"), (stack, world, entity) -> DateUtil.isChristmas() ? 1 : 0);
@@ -61,6 +67,11 @@ public class EnhancedBlockEntities {
         if(CONFIG.renderEnhancedBeds) {
             EBESetup.setupBeds();
             EBESetup.setupRRPBeds();
+        }
+
+        if(CONFIG.renderEnhancedShulkerBoxes) {
+            EBESetup.setupShulkerBoxes();
+            EBESetup.setupRRPShulkerBoxes();
         }
     }
 }

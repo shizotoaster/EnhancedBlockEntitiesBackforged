@@ -11,6 +11,8 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import javax.annotation.Nullable;
+
 public enum ResourceUtil {;
     private static RuntimeResourcePack PACK;
     private static ExperimentalResourcePack EXPERIMENTAL_PACK;
@@ -161,6 +163,27 @@ public enum ResourceUtil {;
     private static String bedAOSuffix(String model) {
         if (EnhancedBlockEntities.CONFIG.bedAO) model += "_ao";
         return model;
+    }
+
+    public static void addShulkerBoxModels(@Nullable DyeColor color, RuntimeResourcePack pack) {
+        String texture = color != null ? "entity/shulker/shulker_"+color.getName() : "entity/shulker/shulker";
+        String shulkerBoxStr = color != null ? color.getName()+"_shulker_box" : "shulker_box";
+        String particle = "block/"+shulkerBoxStr;
+        pack.addModel(JModel.model().parent("block/template_shulker_box").textures(JModel.textures().var("shulker", texture).var("particle", particle)), new Identifier("block/"+shulkerBoxStr));
+        pack.addModel(JModel.model().parent("block/template_shulker_box_bottom").textures(JModel.textures().var("shulker", texture).var("particle", particle)), new Identifier("block/"+shulkerBoxStr+"_bottom"));
+        pack.addModel(JModel.model().parent("block/template_shulker_box_lid").textures(JModel.textures().var("shulker", texture).var("particle", particle)), new Identifier("block/"+shulkerBoxStr+"_lid"));
+    }
+
+    public static void addShulkerBoxBlockStates(@Nullable DyeColor color, RuntimeResourcePack pack) {
+        String shulkerBoxStr = color != null ? color.getName()+"_shulker_box" : "shulker_box";
+        JVariant variant = JState.variant()
+                .put("facing=up", JState.model("builtin:"+shulkerBoxStr))
+                .put("facing=down", JState.model("builtin:"+shulkerBoxStr).x(180));
+        for (Direction dir : new Direction[] {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST}) {
+            int rot = (int)dir.asRotation() + 180;
+            variant.put("facing="+dir.getName(), JState.model("builtin:"+shulkerBoxStr).x(90).y(rot));
+        }
+        pack.addBlockState(JState.state(variant), new Identifier(shulkerBoxStr));
     }
 
     public static void resetPack() {
